@@ -27,10 +27,12 @@
       })
         .then(() => {
           msg.textContent = "You're on the list! 💌";
+          msg.style.fontSize = "0.5rem";
           form.reset();
         })
         .catch(() => {
           msg.textContent = "Oops! Something went wrong. Try again.";
+          msg.style.fontSize = "0.5rem";
         });
     });
   }
