@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tell Me Tails — Storytelling for Kids</title>
+
+  <meta name="description" content="Tell Me Tails is a magical storytelling companion that helps kids create stories through imagination and play." />
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="logo.png" class="logo" alt="Tell Me Tails logo">
+      <span>Tell Me Tails</span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Home
+        <span class="leaf leaf1" aria-hidden="true"></span>
+        <span class="leaf leaf2" aria-hidden="true"></span>
+        <span class="leaf leaf3" aria-hidden="true"></span>
+        <span class="leaf leaf4" aria-hidden="true"></span>
+        <span class="leaf leaf5" aria-hidden="true"></span>
+      </a>
+      <a href="about.html" class="nav-link">About
+        <span class="leaf leaf1" aria-hidden="true"></span>
+        <span class="leaf leaf2" aria-hidden="true"></span>
+        <span class="leaf leaf3" aria-hidden="true"></span>
+        <span class="leaf leaf4" aria-hidden="true"></span>
+        <span class="leaf leaf5" aria-hidden="true"></span>
+      </a>
+      <a href="contact.html" class="nav-link">Contact
+        <span class="leaf leaf1" aria-hidden="true"></span>
+        <span class="leaf leaf2" aria-hidden="true"></span>
+        <span class="leaf leaf3" aria-hidden="true"></span>
+        <span class="leaf leaf4" aria-hidden="true"></span>
+        <span class="leaf leaf5" aria-hidden="true"></span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Once upon a time…<br>your child told the story</h1>
+        <p class="tagline">
+          A cuddly storytelling companion for kids ages 3–5.
+        </p>
+
+        <a href="#subscribe" class="btn primary">Subscribe</a>
+      </div>
+
+      <div class="hero-toy">
+        <div class="toy-circle">
+  <img src="logo.png" alt="Story Buddy Toy">
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features container">
+    <h2>Why Kids Love Tell Me Tails</h2>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🗣️</div>
+        <h3>Talk & Create</h3>
+        <p>Kids speak stories out loud and bring imagination to life.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>No Screens</h3>
+        <p>Just storytelling, creativity, and play.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📖</div>
+        <h3>Every Story Is New</h3>
+        <p>There’s no right or wrong story — just magic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section id="subscribe" class="subscribe">
+    <div class="subscribe-inner">
+      <h2>Join Our Story Circle 💌</h2>
+      <p>Updates, prompts, and early access for parents & educators.</p>
+
+      <div class="subscribe-row">
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" id="email" placeholder="parent@email.com" required>
+          <button type="submit" class="btn primary">Subscribe</button>
+        </form>
+
+        <div class="instagram-follow">
+          <span class="ig-circle" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" />
+            </svg>
+          </span>
+          <div>
+            <strong>@tellmetails</strong>
+            <small>Follow for stories & sneak peeks</small>
+          </div>
+          <a href="#" class="btn primary ig-btn">Follow</a>
+        </div>
+      </div>
+
+      <div id="subscribeMsg" class="subscribe-msg"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Tell Me Tails</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

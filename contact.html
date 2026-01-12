@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Tell Me Tails</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" class="logo" alt="logo">
+      <span>Tell Me Tails</span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container contact-page">
+  <h1>Get in touch</h1>
+  <p>We'd love to hear from parents, press, and partners. Use the form or the contact details to the right.</p>
+
+  <div class="contact-grid">
+    <section class="contact-panel">
+      <form class="contact-form" action="mailto:hello@example.com" method="post">
+        <label for="name">Full name</label>
+        <input id="name" type="text" placeholder="Your name" required>
+
+        <label for="emailc">Email</label>
+        <input id="emailc" type="email" placeholder="you@example.com" required>
+
+        <label for="topic">Topic</label>
+        <select id="topic">
+          <option>General</option>
+          <option>Press</option>
+          <option>Partnerships</option>
+          <option>Feedback</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" rows="6" placeholder="Tell us how we can help" required></textarea>
+
+        <button class="btn primary" type="submit">Send message</button>
+      </form>
+    </section>
+
+    <aside class="contact-info">
+      <div class="contact-card">
+        <img src="assets/logo.svg" alt="Tell Me Tails" style="width:140px;border-radius:12px;border:4px solid var(--light-green)">
+        <h3>Tell Me Tails</h3>
+        <p class="muted">hello@tellmetails.example</p>
+        <p class="muted">Press & partnerships: partners@tellmetails.example</p>
+        <div style="margin-top:1rem">
+          <a href="#" class="ig-btn">@tellmetails</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year3"></span> Tell Me Tails</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

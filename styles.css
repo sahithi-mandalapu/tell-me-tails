@@ -1,0 +1,474 @@
+:root {
+  --light-green: #D8ECCA;
+  --med-green: #065B00;
+  --dark-green: #043A04;
+
+  --light-brown: #DBAC87;
+  --med-brown: #A57652;
+  --dark-brown: #502C10;
+
+  --bg: #F3F6F2;
+  --surface: #FBFDF9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+
+  background: var(--bg);
+  background-image: 
+    radial-gradient(circle, rgba(216,236,202,0.75) 15%, transparent 16%),
+    radial-gradient(circle, rgba(219,172,135,0.5) 10%, transparent 11%);
+  background-size: 120px 120px;
+  background-position: 0 0, 60px 60px;
+
+  color: var(--dark-green);
+}
+
+
+/* BACKGROUND BLOBS */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+body::before {
+  width: 300px;
+  height: 300px;
+  background: var(--light-green);
+  top: -80px;
+  left: -80px;
+}
+
+body::after {
+  width: 420px;
+  height: 420px;
+  background: var(--light-brown);
+  bottom: -120px;
+  right: -120px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+/* HEADER */
+.site-header {
+  background: var(--light-brown);
+  border-bottom: 4px solid rgba(6,91,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(4px);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo { width: 48px; }
+
+/* NAV POP EFFECT - cartoon leaf burst around hovered nav item */
+.main-nav .nav-link {
+  margin-left: .75rem;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--dark-green);
+  font-weight: 600;
+  transition: transform .18s ease, background .18s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.main-nav .nav-link:hover {
+  background: linear-gradient(90deg, rgba(216,236,202,0.6), rgba(219,172,135,0.08));
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* Leaf sprite */
+/* Cartoon-style leaf */
+.nav-link .leaf {
+  --tx: 0px; --ty: 0px; --rot: 0deg;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;     
+  height: 28px;    
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center center;
+  opacity: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M32 2 C20 10 10 32 32 62 C54 32 44 10 32 2 Z' fill='%23065B00'/><path d='M32 2 C28 12 12 32 32 62 C52 32 36 12 32 2 Z' fill='%2308A700'/></svg>");
+  transition: transform .36s cubic-bezier(.2,.9,.2,1), opacity .18s ease;
+}
+
+
+/* Staggered offsets for leaf burst (unchanged) */
+.nav-link .leaf1 { --tx: 0px;   --ty: -42px; --rot: -28deg; transition-delay: 0s; }
+.nav-link .leaf2 { --tx: 36px;  --ty: -28px; --rot: 10deg;  transition-delay: .03s; }
+.nav-link .leaf3 { --tx: 48px;  --ty: 0px;   --rot: 30deg;  transition-delay: .06s; }
+.nav-link .leaf4 { --tx: -36px; --ty: 28px;  --rot: -8deg;  transition-delay: .09s; }
+.nav-link .leaf5 { --tx: 0px;   --ty: 42px;  --rot: 18deg;  transition-delay: .12s; }
+
+/* On hover the leaves pop out slightly bigger */
+.nav-link:hover .leaf {
+  opacity: 1;
+  transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(var(--rot)) scale(1.5); 
+}
+
+/* small bounce on hover end for a playful feel */
+.nav-link:active { transform: translateY(0) scale(0.98); }
+
+/* Accessibility: don't animate for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link .leaf,
+  .nav-link { transition: none !important; }
+  .nav-link .leaf { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+  .nav-link:hover .leaf { opacity: 1; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(var(--rot)); }
+}
+
+/* HERO */
+.hero {
+  padding: 4rem 0;
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+}
+
+.hero-toy {
+  text-align: center;
+}
+
+.toy-circle {
+  font-size: 5rem;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 8px solid var(--dark-green);
+  box-shadow: 0 10px 0 rgba(6,91,0,0.06);
+  overflow: hidden;
+}
+
+.toy-circle img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain; /* keeps logo proportions intact */
+}
+
+/* BUTTONS */
+.btn,
+.btn:visited,
+button,
+a.btn {
+  background: var(--med-green);
+  color: white;
+  border: none;
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 6px 0 var(--dark-green);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 var(--dark-green);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 var(--dark-green);
+}
+
+.btn:focus-visible {
+  outline: 3px dashed var(--med-green);
+  outline-offset: 4px;
+}
+
+/* FEATURES */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  grid-auto-rows: 1fr; /* make each row equal height so cards match */
+}
+
+.card {
+  background: #ffffff; /* force solid white for better contrast */
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(80,44,16,0.06);
+  text-align: center;
+  transition: transform .18s ease, box-shadow .18s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ensures content spacing and equal heights */
+}
+.card:hover{
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(80,44,16,0.12);
+}
+
+.icon {
+  font-size: 2.5rem;
+}
+
+/* team member styles on about page */
+.team-member {
+  background: linear-gradient(180deg, var(--surface), #fff);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+.member-photo img {
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: .6rem;
+  border: 4px solid var(--light-green);
+}
+.team-member h3 { margin: .25rem 0; }
+.team-member .emoji { margin-left: .45rem; }
+.team-member .role { color: var(--med-brown); font-weight: 600; }
+
+/* team hover lift and avatar scale */
+.team-member{transition:transform .18s ease,box-shadow .18s ease}
+.team-member:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(80,44,16,0.10)}
+.team-member .avatar,.team-member .member-photo img{transition:transform .18s ease}
+.team-member:hover .avatar,.team-member:hover .member-photo img{transform:scale(1.06)}
+
+/* SUBSCRIBE */
+.subscribe {
+  margin-top: 2.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subscribe-inner {
+  text-align: center;
+  background: var(--light-green); /* solid color per request */
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 16px 30px rgba(80,44,16,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.subscribe-inner h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.subscribe-inner p {
+  color: var(--dark-green);
+  font-weight: 600;
+}
+
+.subscribe-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* side by side */
+  gap: 1.2rem;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Newsletter and Instagram card */
+.newsletter-form{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:.6rem;
+  padding: 1.2rem; 
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(80,44,16,0.06);
+  background:white;
+  width:100%;
+  max-width:420px;
+  min-height: 72px;  
+}
+
+.newsletter-form:hover,
+.instagram-follow:hover {
+  transform: translateY(-6px);
+}
+
+.newsletter-form input {
+  padding: .9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(6,91,0,0.08);
+  flex:1;
+  margin-bottom: 0;
+}
+
+.instagram-follow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.2rem;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(80,44,16,0.06);
+  width: 100%;
+  max-width: 420px;     
+  min-height: 72px;    
+}
+
+.instagram-follow div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.instagram-follow .btn {
+  margin-left: auto; /* pushes Follow button to right */
+}
+
+
+.instagram-follow .ig-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 6px solid var(--light-green);
+  box-shadow: 0 8px 0 rgba(6,91,0,0.06);
+  color: var(--med-green);
+  flex-shrink: 0;
+}
+
+.instagram-follow small {
+  display: block;
+  font-size: .75rem;
+  color: var(--dark-brown);
+}
+
+.ig-btn {
+  margin-top: .6rem;
+  text-decoration: none;
+}
+
+#subscribeMsg {
+  font-weight: 600;
+  color: var(--dark-green);
+  margin-top: .5rem;
+}
+
+/* FOOTER */
+.site-footer {
+  text-align: center;
+  background: var(--light-brown);
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  line-height: 0.01;
+  border-top: 4px solid rgba(6,91,0,0.06);
+}
+
+/* contact page styles */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1.25rem;
+}
+.contact-card {
+  background: linear-gradient(180deg, var(--surface), #fff);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(80,44,16,0.04);
+}
+.contact-form {
+  display: grid;
+  gap: .75rem;
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  background: #ffffff; /* force solid white for better contrast */
+  padding: .75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(16,32,24,0.06);
+  background: #fff;
+}
+.contact-info .ig-btn { display: inline-block; margin-top: .5rem; }
+
+/* team grid layout */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .subscribe-row {
+    grid-template-columns: 1fr;
+  }
+}
