@@ -8,7 +8,7 @@ What you get:
 - `contact.html` — contact form using `mailto:` (client default)
 - `styles.css` — styling using the provided color palette
 - `script.js` — client-side newsletter capture (stores subscribers in localStorage)
-- `assets/logo.svg` — placeholder logo (simple SVG)
+- `logo.png` — tell me tails logo
 
 How to run locally (Windows):
 1. Open the folder in File Explorer and double-click `index.html`, or
