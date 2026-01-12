@@ -19,8 +19,19 @@
         return;
       }
 
-      msg.textContent = "You're on the list!";
-      form.reset();
+      // Create a Netlify submission using fetch
+      const formData = new FormData(form);
+      fetch("/", {
+        method: "POST",
+        body: formData,
+      })
+        .then(() => {
+          msg.textContent = "You're on the list! 💌";
+          form.reset();
+        })
+        .catch(() => {
+          msg.textContent = "Oops! Something went wrong. Try again.";
+        });
     });
   }
 

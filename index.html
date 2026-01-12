@@ -104,9 +104,18 @@
       <p>Updates, prompts, and early access for parents & educators.</p>
 
       <div class="subscribe-row">
-        <form id="newsletterForm" class="newsletter-form">
-          <input type="email" id="email" placeholder="parent@email.com" required>
+        <form id="newsletterForm" class="newsletter-form" name="newsletter" method="POST" data-netlify="true">
+          <!-- Hidden input required by Netlify -->
+          <input type="hidden" name="form-name" value="newsletter">
+
+          <!-- Email input -->
+          <input type="email" id="email" name="email" placeholder="parent@email.com" required>
+
+          <!-- Submit button -->
           <button type="submit" class="btn primary">Subscribe</button>
+
+          <!-- Message display -->
+          <p id="subscribeMsg"></p>
         </form>
 
         <div class="instagram-follow">
